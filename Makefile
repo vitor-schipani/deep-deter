@@ -1,11 +1,12 @@
-PYTHON = /home/vitorls/miniconda3/envs/cs7643-project/bin/python
+PYTHON ?= python
 
-.PHONY: extraction model refresh_env
+.PHONY: refresh_env extraction model clean_processed clean_model_input
 
 refresh_env:
 	@echo Refreshing environment.yaml
-	conda env export > environment.yaml
-	
+	@echo "name: deep-deter-env" > environment.yaml
+	@conda env export --no-builds | grep -v "^prefix: " | grep -v "^name: " >> environment.yaml
+
 extraction:
 	@echo Running ./deep_deter/data_extraction/main.py
 	python ./deep_deter/data_extraction/main.py
