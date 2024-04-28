@@ -9,7 +9,6 @@ __pycache__/
 
 # Data
 old/
-data/
 *.txt
 *.pdf
 *.png
